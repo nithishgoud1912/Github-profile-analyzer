@@ -1,0 +1,331 @@
+{
+	"info": {
+		"_postman_id": "0bedee72-6d53-41e6-b469-4f9f99e589d2",
+		"name": "GitHub Profile Analyzer API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Successful Health Check",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"service\": \"GitHub Profile Analyzer API\",\n    \"version\": \"1.0.0\",\n    \"status\": \"running\",\n    \"docs\": \"https://github.com/your-repo#readme\",\n    \"endpoints\": {\n        \"analyze\": \"POST /api/analyze/:username\",\n        \"listAll\": \"GET /api/profiles\",\n        \"getOne\": \"GET /api/profiles/:username\",\n        \"delete\": \"DELETE /api/profiles/:username\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Analyze Profile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/analyze/:username",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"analyze",
+						":username"
+					],
+					"variable": [
+						{
+							"key": "username",
+							"value": "octocat"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Profile Analyzed and Stored",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/analyze/:username",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"analyze",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": "octocat"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Profile for \\\"octocat\\\" analyzed and stored successfully.\",\n    \"data\": {\n        \"id\": 1,\n        \"username\": \"octocat\",\n        \"name\": \"The Octocat\",\n        \"bio\": \"Testing, testing, testing...\",\n        \"avatar_url\": \"https://avatars.githubusercontent.com/u/5832347?v=4\",\n        \"github_url\": \"https://github.com/octocat\",\n        \"company\": \"@github\",\n        \"location\": \"San Francisco\",\n        \"blog\": \"https://github.blog\",\n        \"email\": null,\n        \"twitter_handle\": null,\n        \"public_repos\": 8,\n        \"public_gists\": 8,\n        \"followers\": 3500,\n        \"following\": 9,\n        \"account_age_days\": 5475,\n        \"avg_followers_per_repo\": 437.5,\n        \"is_hireable\": false,\n        \"top_languages\": [\n            \"HTML\",\n            \"CSS\",\n            \"JavaScript\"\n        ],\n        \"github_created_at\": \"2011-01-25T18:44:36.000Z\",\n        \"github_updated_at\": \"2026-05-30T17:53:23.000Z\",\n        \"analyzed_at\": \"2026-05-30T23:22:43.000Z\",\n        \"updated_at\": \"2026-05-30T23:22:43.000Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "List Analyzed Profiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/profiles?limit=20&offset=0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"profiles"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "20"
+						},
+						{
+							"key": "offset",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "List Stored Profiles",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/profiles?limit=20&offset=0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"profiles"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "20"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"profiles\": [\n        {\n            \"id\": 1,\n            \"username\": \"octocat\",\n            \"name\": \"The Octocat\",\n            \"bio\": \"Testing, testing, testing...\",\n            \"avatar_url\": \"https://avatars.githubusercontent.com/u/5832347?v=4\",\n            \"github_url\": \"https://github.com/octocat\",\n            \"company\": \"@github\",\n            \"location\": \"San Francisco\",\n            \"blog\": \"https://github.blog\",\n            \"email\": null,\n            \"twitter_handle\": null,\n            \"public_repos\": 8,\n            \"public_gists\": 8,\n            \"followers\": 3500,\n            \"following\": 9,\n            \"account_age_days\": 5475,\n            \"avg_followers_per_repo\": 437.5,\n            \"is_hireable\": false,\n            \"top_languages\": [\n                \"HTML\",\n                \"CSS\",\n                \"JavaScript\"\n            ],\n            \"github_created_at\": \"2011-01-25T18:44:36.000Z\",\n            \"github_updated_at\": \"2026-05-30T17:53:23.000Z\",\n            \"analyzed_at\": \"2026-05-30T23:22:43.000Z\",\n            \"updated_at\": \"2026-05-30T23:22:43.000Z\"\n        }\n    ],\n    \"total\": 1,\n    \"limit\": 20,\n    \"offset\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Single Stored Profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/profiles/:username",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"profiles",
+						":username"
+					],
+					"variable": [
+						{
+							"key": "username",
+							"value": "octocat"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Stored Profile Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/profiles/:username",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": "octocat"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"username\": \"octocat\",\n        \"name\": \"The Octocat\",\n        \"bio\": \"Testing, testing, testing...\",\n        \"avatar_url\": \"https://avatars.githubusercontent.com/u/5832347?v=4\",\n        \"github_url\": \"https://github.com/octocat\",\n        \"company\": \"@github\",\n        \"location\": \"San Francisco\",\n        \"blog\": \"https://github.blog\",\n        \"email\": null,\n        \"twitter_handle\": null,\n        \"public_repos\": 8,\n        \"public_gists\": 8,\n        \"followers\": 3500,\n        \"following\": 9,\n        \"account_age_days\": 5475,\n        \"avg_followers_per_repo\": 437.5,\n        \"is_hireable\": false,\n        \"top_languages\": [\n            \"HTML\",\n            \"CSS\",\n            \"JavaScript\"\n        ],\n        \"github_created_at\": \"2011-01-25T18:44:36.000Z\",\n        \"github_updated_at\": \"2026-05-30T17:53:23.000Z\",\n        \"analyzed_at\": \"2026-05-30T23:22:43.000Z\",\n        \"updated_at\": \"2026-05-30T23:22:43.000Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Stored Profile",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/profiles/:username",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"profiles",
+						":username"
+					],
+					"variable": [
+						{
+							"key": "username",
+							"value": "octocat"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Profile Deleted",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/profiles/:username",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"profiles",
+								":username"
+							],
+							"variable": [
+								{
+									"key": "username",
+									"value": "octocat"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Profile \\\"octocat\\\" deleted successfully.\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
